@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <metadata xmlns="http://schemas.haulmont.com/cuba/metadata.xsd">
-
-    <metadata-model root-package="it.nexbit.cuba.dynamiccolumns" namespace="nxdcol"/>
-
+    <metadata-model namespace="nxdcol"
+                    root-package="it.nexbit.cuba.dynamiccolumns">
+        <class>it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn</class>
+    </metadata-model>
 </metadata>

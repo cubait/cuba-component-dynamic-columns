@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editDynamicColumsDialog.caption"
+        class="it.nexbit.cuba.dynamiccolumns.web.screens.DynamicColumnBrowse"
+        focusComponent="table"
+        messagesPack="it.nexbit.cuba.dynamiccolumns.web">
+    <dsContext>
+        <datasource id="dynamicColumnDs"
+                    class="it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn"
+                    allowCommit="false"
+                    view="_local"/>
+        <collectionDatasource id="dynamicColumnsDs"
+                              class="it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn"
+                              refreshMode="NEVER"
+                              view="_local">
+            <query>
+                <![CDATA[select e from nxdcol$DynamicColumn e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+        <action id="apply"
+                caption="mainMsg://actions.Apply"
+                invoke="applyDialog"/>
+        <action id="close"
+                caption="mainMsg://actions.Close"
+                invoke="closeDialog"/>
+        <action id="testScript"
+                caption="msg://editDynamicColumsDialog.testScriptCaption"
+                invoke="testScript"/>
+    </actions>
+    <dialogMode height="600"
+                resizable="true"
+                width="900"/>
+    <layout>
+        <vbox id="container"
+              expand="split"
+              height="100%">
+            <split id="split"
+                   orientation="horizontal"
+                   reversePosition="true"
+                   width="100%">
+                <vbox id="lookupBox"
+                      height="100%"
+                      margin="false,true,false,false"
+                      spacing="true">
+                    <table id="table"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="groovyScript"
+                                    required="true"/>
+                        </columns>
+                        <rows datasource="dynamicColumnsDs"/>
+                        <rowsCount/>
+                        <buttonsPanel id="buttonsPanel"
+                                      alwaysVisible="true">
+                            <button id="createBtn"
+                                    action="table.create"/>
+                            <button id="editBtn"
+                                    action="table.edit"/>
+                            <button id="removeBtn"
+                                    action="table.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </vbox>
+                <vbox id="editBox"
+                      caption="msg://editDynamicColumsDialog.editCaption"
+                      expand="fieldsGrid"
+                      height="100%"
+                      margin="false,false,false,true"
+                      spacing="true">
+                    <grid id="fieldsGrid"
+                          spacing="true"
+                          width="100%">
+                        <columns>
+                            <column/>
+                            <column flex="1.0"/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label id="nameLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://it.nexbit.cuba.dynamiccolumns.entity/DynamicColumn.name"/>
+                                <textField id="nameField"
+                                           datasource="dynamicColumnDs"
+                                           property="name"
+                                           width="100%"/>
+                            </row>
+                            <row flex="1.0">
+                                <vbox id="groovyScriptBox"
+                                      colspan="2"
+                                      expand="groovyScriptField"
+                                      height="100%"
+                                      spacing="true">
+                                    <label id="groovyScriptLabel"
+                                           align="MIDDLE_LEFT"
+                                           value="msg://it.nexbit.cuba.dynamiccolumns.entity/DynamicColumn.groovyScript"/>
+                                    <sourceCodeEditor id="groovyScriptField"
+                                                      contextHelpText="msg://editDynamicColumsDialog.groovyHint"
+                                                      datasource="dynamicColumnDs"
+                                                      mode="Groovy"
+                                                      property="groovyScript"
+                                                      showGutter="false"
+                                                      width="100%"/>
+                                </vbox>
+                            </row>
+                        </rows>
+                    </grid>
+                    <hbox id="actionsPane"
+                          enable="false"
+                          spacing="true">
+                        <button id="saveBtn"
+                                action="save"/>
+                        <button id="cancelBtn"
+                                action="cancel"/>
+                        <button id="testScriptBtn"
+                                action="testScript"/>
+                    </hbox>
+                </vbox>
+            </split>
+            <hbox id="dialogActionsPane"
+                  margin="true,false,false,false"
+                  spacing="true"
+                  width="100%">
+                <hbox id="dialogActionsButtons"
+                      align="MIDDLE_RIGHT"
+                      spacing="true">
+                    <button id="applyBtn"
+                            action="apply"/>
+                    <button id="closeBtn"
+                            action="close"/>
+                </hbox>
+            </hbox>
+        </vbox>
+    </layout>
+</window>
