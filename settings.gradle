@@ -1,0 +1,5 @@
+rootProject.name = 'dynamic-columns'
+def modulePrefix = 'nxdcol'
+include(":${modulePrefix}-global", ":${modulePrefix}-web")
+project(":${modulePrefix}-global").projectDir = new File(settingsDir, 'modules/global')
+project(":${modulePrefix}-web").projectDir = new File(settingsDir, 'modules/web')
