@@ -35,7 +35,7 @@ import java.util.*;
 
 public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicColumnsAction.Dialog, Suggester {
 
-    protected static final String ENTITY_NAME_ALIAS = "IT";
+    protected static final String ENTITY_NAME_ALIAS = "a39";
 
     /**
      * Indicates that a new instance of entity is being created.
@@ -347,12 +347,11 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
 
         final MetaClass metaClass = dynamicColumnsManager.getTarget().getDatasource().getMetaClass();
         String query = "select " +
-                text +
+                text.replace("{E}", ENTITY_NAME_ALIAS) +
                 " from " +
                 metaClass.getName() +
                 " " +
                 ENTITY_NAME_ALIAS;
-        //query = query.replace("{E}", ENTITY_NAME_ALIAS);
         position = "select ".length() + cursorPosition - 1;
 
         DomainModel domainModel = new DomainModel();
@@ -364,7 +363,7 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
                 addProperty(builder, metaClass, prop);
         }
         JpqlEntityModel entity = builder.produce();
-        ((JpqlEntityModelImpl) entity).setUserFriendlyName("IT");
+        ((JpqlEntityModelImpl) entity).setUserFriendlyName("{E}");
         domainModel.add(entity);
 
         return JpqlSuggestionFactory.requestHint(query, position, source, cursorPosition, new HintProvider(domainModel));

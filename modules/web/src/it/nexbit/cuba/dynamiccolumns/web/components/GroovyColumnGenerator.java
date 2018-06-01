@@ -11,8 +11,6 @@ import it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn;
 
 public class GroovyColumnGenerator implements DynamicColumnsManager.DynamicColumnGenerator {
 
-    protected static final String ENTITY_NAME_ALIAS = "IT";
-
     protected Scripting scripting = AppBeans.get(Scripting.NAME);
     protected ComponentsFactory componentsFactory = AppBeans.get(ComponentsFactory.NAME);
 
@@ -50,6 +48,6 @@ public class GroovyColumnGenerator implements DynamicColumnsManager.DynamicColum
     }
 
     protected String parseScript() {
-        return dynamicColumn.getGroovyScript().replace(ENTITY_NAME_ALIAS, "__entity__");
+        return dynamicColumn.getGroovyScript().replace("{E}", "__entity__");
     }
 }
