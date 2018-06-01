@@ -44,8 +44,9 @@ and click `Use in the project` button, and then press `OK`.
 | Platform Version | Add-on Version | Coordinates
 | ---------------- | -------------- | -----------
 | 6.8.x            | 1.0.0          | it.nexbit.cuba.dynamiccolumns:nxdcol:1.0.0
+| 6.9.x            | 1.1.0          | it.nexbit.cuba.dynamiccolumns:nxdcol:1.1.0
 
-The latest stable version is: `1.0.0`
+The latest stable version is: `1.1.0`
 
 Add custom application component to your project. Using **CUBA Studio**, go to `PROJECT PROPERTIES` -> `Edit` and click `+` next to `Custom components`,
 then paste into the first field the appropriate coordinates for the desired version, picked from the table above.
