@@ -151,16 +151,16 @@ public class OrderLineBrowse extends AbstractLookup {
 That's it! The following screenshot shows the browse screen with one Dynamic Column and a `dynamicCaption`
 enabled button:
 
-![](/sreenshots/1-browse-screen-dynamic-caption.png "Browse screen with dynamic caption")
+![](./screenshots/1-browse-screen-dynamic-caption.png "Browse screen with dynamic caption")
 
 While the following is the same browse screen but with `dynamicCaption = false`:
 
-![](/sreenshots/2-browse-screen-static-caption.png "Browse screen with static caption")
+![](./screenshots/2-browse-screen-static-caption.png "Browse screen with static caption")
 
 Clicking on the `Dynamic Columns` button opens a dialog where each user can add/edit/remove own dynamic columns,
 for that specific table in that specific screen. Every user has their unique settings.
 
-![](/sreenshots/3-edit-dynamic-columns-dialog.png "Edit Dynamic Columns dialog")
+![](./screenshots/3-edit-dynamic-columns-dialog.png "Edit Dynamic Columns dialog")
 
 
 ### Extending
