@@ -53,7 +53,8 @@ then paste into the first field the appropriate coordinates for the desired vers
 
 ## Supported DBMS engines
 
-_N/A_ - This component does not need any data
+_N/A_ - This component does not add any new table. It relies on the `UserSettingService` and its underlying
+table (`SEC_USER_SETTING`).
 
 ## Created tables
 
