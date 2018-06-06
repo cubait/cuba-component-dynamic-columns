@@ -1,9 +1,10 @@
-[![license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
+[![license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http:s//www.apache.org/licenses/LICENSE-2.0)
+[![Semver](https://img.shields.io/SemVer/2.0.0.png)](https://semver.org/spec/v2.0.0.html)
+[![Marketplace](https://img.shields.io/badge/Marketplace-dynamic--columns-blue.svg)](https://www.cuba-platform.com/marketplace/dynamic-columns)
 
-# CUBA Dynamic Columns Component
+# CUBA Dynamic Columns Add-on
 
-A CUBA Framework component that adds dynamic columns support (user created) for Table components. 
+A CUBA Framework add-on component that adds dynamic columns support (user created) for Table components. 
 **NOTE**: only the `web` module is supported.
 
 Basically it provides a custom action that you can add to your table components,
@@ -13,7 +14,12 @@ by a Groovy script.
 
 ## Installation
 
-1. Add the following maven repository `https://dl.bintray.com/pfurini/cuba-components` to the build.gradle of your CUBA application:
+**NOTE**: This add-on's repository is officially linked to the main CUBA repository.
+
+*You can jump straight to step 2. for instructions on how to add it to your project*, or *optionally*
+you can choose to add my repository to your project's repositories.  
+
+1. [*OPTIONAL*] Add the following maven repository `https://dl.bintray.com/pfurini/cuba-components` to the build.gradle of your CUBA application:
 
 ```
 buildscript {
