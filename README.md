@@ -14,7 +14,7 @@ by a Groovy script.
 
 ## Installation
 
-**NOTE**: This add-on's repository is officially linked to the main CUBA repository.
+**NOTE: This add-on's repository is officially linked to the main CUBA repository.**
 
 *You can jump straight to step 2. for instructions on how to add it to your project*, or *optionally*
 you can choose to add my repository to your project's repositories.  
@@ -51,8 +51,9 @@ and click `Use in the project` button, and then press `OK`.
 | ---------------- | -------------- | -----------
 | 6.8.x            | 1.0.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.0.0
 | 6.9.x            | 1.1.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.1.0
+| 6.10.x           | 1.2.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.2.0
 
-The latest stable version is: `1.1.0`
+The latest stable version is: `1.2.0` for CUBA 6.10
 
 Add custom application component to your project. Using **CUBA Studio**, go to `PROJECT PROPERTIES` -> `Edit` and click `+` next to `Custom components`,
 then paste into the first field the appropriate coordinates for the desired version, picked from the table above.
