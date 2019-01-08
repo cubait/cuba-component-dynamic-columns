@@ -33,7 +33,7 @@ cuba {
     artifact {
         group = 'it.nexbit.cuba.dynamiccolumns'
         version = "1.2.0"
-        isSnapshot = true
+        isSnapshot = false
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
