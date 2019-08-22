@@ -5,7 +5,6 @@
 # CUBA Dynamic Columns Add-on
 
 A CUBA Framework add-on component that adds dynamic columns support (user created) for Table components. 
-**NOTE**: only the `web` module is supported.
 
 Basically it provides a custom action that you can add to your table components,
 and associate to a button (or context menu item, or whatever you want) that when triggered
@@ -39,12 +38,6 @@ buildscript {
 }
 ```
 
-Alternatively you can use **CUBA Studio** to add it: just go to the `PROJECT PROPERTIES` section,
-click `Edit`, then click on the cog icon next to the `Repository` field.
-In the dialog that opens, click on `+ Add` and enter `https://dl.bintray.com/pfurini/cuba-components`
-in the `URL` field, then click `OK`. Finally, select the just added repository in the upper list,
-and click `Use in the project` button, and then press `OK`.
-
 2. Select a version of the add-on which is compatible with the platform version used in your project:
 
 | Platform Version | Add-on Version | Coordinates
@@ -52,11 +45,11 @@ and click `Use in the project` button, and then press `OK`.
 | 6.8.x            | 1.0.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.0.0
 | 6.9.x            | 1.1.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.1.0
 | 6.10.x           | 1.2.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:1.2.0
+| 7.0.x            | 2.0.0          | it.nexbit.cuba.dynamiccolumns:nxdcol-global:2.0.0
 
-The latest stable version is: `1.2.0` for CUBA 6.10
+The latest stable version is: `2.0.0` for CUBA 7.0
 
-Add custom application component to your project. Using **CUBA Studio**, go to `PROJECT PROPERTIES` -> `Edit` and click `+` next to `Custom components`,
-then paste into the first field the appropriate coordinates for the desired version, picked from the table above.
+3. Install the correct add-on version in your project using **CUBA Studio**, or manually by editing your `build.gradle` file.
 
 ## Supported DBMS engines
 

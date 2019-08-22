@@ -9,8 +9,7 @@ import com.haulmont.cuba.core.global.MetadataTools;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.security.app.UserSettingService;
 import it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn;
-import org.apache.commons.lang.NullArgumentException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.springframework.context.annotation.Scope;
@@ -36,10 +35,7 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
     protected MetadataTools metadataTools = AppBeans.get(MetadataTools.NAME);
 
     public DynamicColumnsManagerImpl(Table target) {
-        if (target == null) {
-            throw new NullArgumentException("target");
-        }
-        this.target = target;
+        this.target = Objects.requireNonNull(target);
 
         this.columnGeneratorsStore = new HashMap<>();
     }
@@ -109,7 +105,7 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
      *
      * @param target  the new Table component linked with this manager
      *
-     * @throws org.apache.commons.lang.NullArgumentException  target was null
+     * @throws NullPointerException   target was null
      * @throws IllegalStateException  target was already set
      */
     @Override
@@ -117,13 +113,10 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
         if (this.target == target) {
             return;
         }
-        if (target == null) {
-            throw new NullArgumentException("target");
-        }
         if (this.target != null) {
             throw new IllegalStateException("target is already set");
         }
-        this.target = target;
+        this.target = Objects.requireNonNull(target);
     }
 
     /**
@@ -156,7 +149,6 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
      *
      * @throws IllegalStateException  target was not set yet
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void updateTableDynamicColumns() {
         if (getTarget() == null) {
@@ -206,7 +198,6 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
         this.dynamicColumns = null;
     }
 
-    @SuppressWarnings("unchecked")
     protected List<DynamicColumn> loadDynamicColumnsFromUserSetting() {
         String setting = settings.loadSetting(getSettingName());
         if (StringUtils.isBlank(setting)) {
@@ -224,7 +215,7 @@ public class DynamicColumnsManagerImpl implements DynamicColumnsManager {
 
         List<DynamicColumn> columns = new ArrayList<>();
 
-        for (Element e : ((List<Element>) columnsRoot.elements("column"))) {
+        for (Element e : columnsRoot.elements("column")) {
             DynamicColumn dc = deserializeDynamicColumnElement(e);
             if (dc != null) {
                 columns.add(dc);

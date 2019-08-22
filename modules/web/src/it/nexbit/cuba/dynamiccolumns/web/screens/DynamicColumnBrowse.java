@@ -27,7 +27,7 @@ import com.haulmont.cuba.security.entity.EntityOp;
 import it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn;
 import it.nexbit.cuba.dynamiccolumns.web.components.DynamicColumnsManager;
 import it.nexbit.cuba.dynamiccolumns.web.components.actions.EditDynamicColumnsAction;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.groovy.control.CompilationFailedException;
 
 import javax.inject.Inject;
@@ -97,7 +97,6 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
         disableEditControls();
     }
 
-    @SuppressWarnings("unchecked")
     protected void processParams(Map<String, Object> params) {
         dynamicColumnsStore = new HashMap<>();
         dynamicColumnsManager =
@@ -118,7 +117,6 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
     /**
      * Adds a listener that reloads the selected record from the Map store
      */
-    @SuppressWarnings("unchecked")
     protected void initBrowseItemChangeListener() {
         dynamicColumnsDs.addItemChangeListener(e -> {
             if (e.getItem() != null) {
@@ -134,7 +132,6 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
      */
     protected void initBrowseCreateAction() {
         table.addAction(new CreateAction(table) {
-            @SuppressWarnings("unchecked")
             @Override
             protected void internalOpenEditor(CollectionDatasource datasource, Entity newItem, Datasource parentDs, Map<String, Object> params) {
                 initNewItem(newItem);
@@ -260,7 +257,6 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
     /**
      * Method that is invoked by clicking Ok button after editing an existing or creating a new record.
      */
-    @SuppressWarnings("unchecked")
     public void save() {
         if (!editing)
             return;
@@ -287,7 +283,6 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
     /**
      * Method that is invoked by clicking Cancel button, discards changes and disables controls for editing.
      */
-    @SuppressWarnings("unchecked")
     public void cancel() {
         DynamicColumn selectedItem = dynamicColumnsDs.getItem();
         if (selectedItem == null) {

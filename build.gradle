@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.10.6'
+    ext.cubaVersion = '7.0.10'
     repositories {
         
         maven {
@@ -26,13 +26,12 @@ def webModule = project(":${modulePrefix}-web")
 def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
 
 
-apply(plugin: 'idea')
 apply(plugin: 'cuba')
 
 cuba {
     artifact {
         group = 'it.nexbit.cuba.dynamiccolumns'
-        version = "1.2.0"
+        version = "2.0.0"
         isSnapshot = false
     }
     tomcat {
@@ -45,12 +44,11 @@ dependencies {
 
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.2.9'
+def hsql = 'org.hsqldb:hsqldb:2.4.1'
 
 configure([globalModule, webModule]) {
     apply(plugin: 'java')
     apply(plugin: 'maven')
-    apply(plugin: 'idea')
     apply(plugin: 'cuba')
 
     dependencies {
@@ -68,6 +66,12 @@ configure([globalModule, webModule]) {
 }
 
 configure(globalModule) {
+    dependencies {
+        if (!JavaVersion.current().isJava8()) {
+            runtime('javax.xml.bind:jaxb-api:2.3.1')
+            runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+        }
+    }
     entitiesEnhancing {
         main { enabled = true }
     }
@@ -88,7 +92,7 @@ configure(webModule) {
     }
 
     dependencies {
-        provided(servletApi)
+        compileOnly(servletApi)
         compile(globalModule)
 
     }
@@ -152,8 +156,5 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-web:deploy"], description: 'R
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.3.1'
-}
 
 apply from: 'publish.gradle';

@@ -2,10 +2,11 @@ package it.nexbit.cuba.dynamiccolumns.web.components.actions;
 
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Configuration;
+import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.core.global.Security;
 import com.haulmont.cuba.gui.WindowManager.OpenType;
 import com.haulmont.cuba.gui.components.*;
-import com.haulmont.cuba.gui.components.actions.BaseAction;
+import com.haulmont.cuba.gui.components.actions.ListAction;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 import com.haulmont.cuba.gui.icons.CubaIcon;
 import com.haulmont.cuba.security.entity.EntityOp;
@@ -19,7 +20,7 @@ import java.util.function.Supplier;
 
 @org.springframework.stereotype.Component("nxdcol_EditDynamicColumnsAction")
 @Scope("prototype")
-public class EditDynamicColumnsAction extends BaseAction
+public class EditDynamicColumnsAction extends ListAction
         implements Action.HasOpenType, Action.HasBeforeActionPerformedHandler {
 
     public static final String ACTION_ID = "editDynamicColumns";
@@ -39,6 +40,8 @@ public class EditDynamicColumnsAction extends BaseAction
     protected Supplier<Map<String, Object>> windowParamsSupplier;
 
     protected Security security = AppBeans.get(Security.NAME);
+
+    private Messages messages = AppBeans.get(Messages.NAME);
 
     /**
      * Creates an action with default id, opening the edit screen in a DIALOG.

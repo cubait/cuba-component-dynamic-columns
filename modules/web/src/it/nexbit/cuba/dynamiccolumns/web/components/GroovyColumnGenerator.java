@@ -3,16 +3,16 @@ package it.nexbit.cuba.dynamiccolumns.web.components;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Scripting;
+import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.components.Table;
-import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import groovy.lang.Binding;
 import it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn;
 
 public class GroovyColumnGenerator implements DynamicColumnsManager.DynamicColumnGenerator {
 
     protected Scripting scripting = AppBeans.get(Scripting.NAME);
-    protected ComponentsFactory componentsFactory = AppBeans.get(ComponentsFactory.NAME);
+    protected UiComponents componentsFactory = AppBeans.get(UiComponents.NAME);
 
     protected DynamicColumn dynamicColumn;
 
@@ -40,7 +40,7 @@ public class GroovyColumnGenerator implements DynamicColumnsManager.DynamicColum
             Object result = scripting.evaluateGroovy(parseScript(), binding);
             return new Table.PlainTextCell(result == null ? "" : result.toString());
         } catch (RuntimeException e) {
-            Label errorLabel = (Label) componentsFactory.createComponent(Label.NAME);
+            Label<String> errorLabel = componentsFactory.create(Label.NAME);
             errorLabel.setValue(e.getMessage());
             errorLabel.setStyleName("failure");
             return errorLabel;

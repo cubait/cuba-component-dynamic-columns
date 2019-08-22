@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
                dependsOn="com.haulmont.cuba">
-    <module blocks="*"
-            name="global">
-        <artifact appJar="true"
-                  name="nxdcol-global"/>
-        <property name="cuba.metadataConfig"
-                  value="+it/nexbit/cuba/dynamiccolumns/metadata.xml"/>
-        <property name="cuba.viewsConfig"
-                  value="+it/nexbit/cuba/dynamiccolumns/views.xml"/>
+
+    <module name="global" blocks="*">
+        <artifact name="nxdcol-global" appJar="true"/>
+
+        <property name="cuba.metadataConfig" value="+it/nexbit/cuba/dynamiccolumns/metadata.xml"/>
+        <property name="cuba.viewsConfig" value="+it/nexbit/cuba/dynamiccolumns/views.xml"/>
     </module>
-    <module blocks="web"
-            dependsOn="global"
-            name="web">
-        <artifact appJar="true"
-                  name="nxdcol-web"/>
-        <artifact classifier="web"
-                  configuration="webcontent"
-                  ext="zip"
-                  name="nxdcol-web"/>
+    <module name="web" dependsOn="global" blocks="web">
+        <artifact name="nxdcol-web" appJar="true"/>
+        <artifact name="nxdcol-web" classifier="web" ext="zip" configuration="webcontent"/>
+
         <property name="cuba.springContextConfig"
                   value="+it/nexbit/cuba/dynamiccolumns/web-spring.xml"/>
         <property name="cuba.dispatcherSpringContextConfig"
                   value="+it/nexbit/cuba/dynamiccolumns/web-dispatcher-spring.xml"/>
-        <property name="cuba.windowConfig"
-                  value="+it/nexbit/cuba/dynamiccolumns/web-screens.xml"/>
-        <property name="cuba.menuConfig"
-                  value="+it/nexbit/cuba/dynamiccolumns/web-menu.xml"/>
+        <property name="cuba.windowConfig" value="+it/nexbit/cuba/dynamiccolumns/web-screens.xml"/>
+        <property name="cuba.menuConfig" value="+it/nexbit/cuba/dynamiccolumns/web-menu.xml"/>
         <property name="cuba.permissionConfig"
                   value="+it/nexbit/cuba/dynamiccolumns/web-permissions.xml"/>
-        <property name="cuba.mainMessagePack"
-                  value="+it.nexbit.cuba.dynamiccolumns.web"/>
+        <property name="cuba.mainMessagePack" value="+it.nexbit.cuba.dynamiccolumns.web"/>
     </module>
 </app-component>
