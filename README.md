@@ -1,6 +1,14 @@
 [![license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http:s//www.apache.org/licenses/LICENSE-2.0)
-[![Semver](https://img.shields.io/SemVer/2.0.0.png)](https://semver.org/spec/v2.0.0.html)
 [![Marketplace](https://img.shields.io/badge/Marketplace-dynamic--columns-blue.svg)](https://www.cuba-platform.com/marketplace/dynamic-columns)
+
+---
+🚨 **WARNING** 🚨
+
+Please read this issue: [The add-on is not compatible with new Screens and Data components API in CUBA 7.0](https://github.com/pfurini/cuba-component-dynamic-columns/issues/6) 
+
+Subscribe to the issue to be notified when progress is made. New screen API support is planned for version 3.0
+
+---
 
 # CUBA Dynamic Columns Add-on
 
