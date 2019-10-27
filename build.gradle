@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '7.0.10'
+    ext.cubaVersion = '7.1.1'
     repositories {
         
         maven {
@@ -14,7 +14,7 @@ buildscript {
     }
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
     }
 }
 
@@ -31,8 +31,8 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'it.nexbit.cuba.dynamiccolumns'
-        version = "2.0.0"
-        isSnapshot = false
+        version = "3.0.0"
+        isSnapshot = true
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
