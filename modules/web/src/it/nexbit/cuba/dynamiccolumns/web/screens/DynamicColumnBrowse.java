@@ -21,6 +21,7 @@ import com.haulmont.cuba.gui.components.autocomplete.JpqlSuggestionFactory;
 import com.haulmont.cuba.gui.components.autocomplete.Suggester;
 import com.haulmont.cuba.gui.components.autocomplete.Suggestion;
 import com.haulmont.cuba.gui.components.autocomplete.impl.HintProvider;
+import com.haulmont.cuba.gui.components.data.meta.EntityDataUnit;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 import com.haulmont.cuba.gui.data.Datasource;
 import com.haulmont.cuba.security.entity.EntityOp;
@@ -307,9 +308,9 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
         if (validateAll() && dynamicColumnsManager != null) {
             if (StringUtils.isNotBlank(groovyScriptField.getValue())) {
                 Map<String, Object> context = new HashMap<>();
-                context.put("__entity__",
-                        metadata.create(dynamicColumnsManager.getTarget().getDatasource().getMetaClass()));
+                MetaClass metaClass = ((EntityDataUnit) dynamicColumnsManager.getTarget().getItems()).getEntityMetaClass();
                 try {
+                    context.put("__entity__", metadata.create(metaClass));
                     scripting.evaluateGroovy(
                             groovyScriptField.getValue().replace("{E}", "__entity__"),
                             context
@@ -340,7 +341,10 @@ public class DynamicColumnBrowse extends AbstractLookup implements EditDynamicCo
     public List<Suggestion> getSuggestions(AutoCompleteSupport source, String text, int cursorPosition) {
         int position;
 
-        final MetaClass metaClass = dynamicColumnsManager.getTarget().getDatasource().getMetaClass();
+        MetaClass metaClass = ((EntityDataUnit) dynamicColumnsManager.getTarget().getItems()).getEntityMetaClass();
+        if (metaClass == null) {
+            return Collections.emptyList();
+        }
         String query = "select " +
                 text.replace("{E}", ENTITY_NAME_ALIAS) +
                 " from " +

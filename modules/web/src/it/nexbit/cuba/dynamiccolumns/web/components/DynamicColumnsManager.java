@@ -2,7 +2,6 @@ package it.nexbit.cuba.dynamiccolumns.web.components;
 
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.AppBeans;
-import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.gui.components.Table;
 import it.nexbit.cuba.dynamiccolumns.entity.DynamicColumn;
 import it.nexbit.cuba.dynamiccolumns.web.components.actions.EditDynamicColumnsAction;
@@ -18,7 +17,7 @@ public interface DynamicColumnsManager {
         return AppBeans.getPrototype(NAME, target);
     }
 
-    static void inject(Frame frame) {
+    static void inject(Object frame) {
         for (Field field : frame.getClass().getDeclaredFields()) {
             Annotation[] annotations = field.getAnnotations();
             for (Annotation annotation : annotations) {
